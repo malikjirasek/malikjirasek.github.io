@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"from weasyprint import HTML; HTML\\(filename='cv_print.html'\\).write_pdf\\('cv.pdf'\\)\")"
+    ]
+  }
+}
