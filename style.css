@@ -192,6 +192,15 @@ img { max-width: 100%; display: block; }
   flex-shrink: 0;
 }
 
+.avatar {
+  width: 160px;
+  height: 200px;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  flex-shrink: 0;
+}
+
 /* BUTTONS */
 .btn {
   display: inline-block;
