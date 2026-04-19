@@ -525,7 +525,7 @@ img { max-width: 100%; display: block; }
   margin-bottom: 0.3rem;
 }
 .cv-skill-group p { font-size: 0.9rem; color: var(--ink-light); }
-.cv-ref-note { font-size: 0.9rem; color: var(--ink-muted); font-style: italic; }
+.cv-ref-note { font-size: 0.9rem; color: var(--ink-muted); }
 
 /* ============================================================
    PROJECTS
