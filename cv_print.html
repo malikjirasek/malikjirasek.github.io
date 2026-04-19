@@ -104,13 +104,22 @@
     }
     .cv-entry-sub em { font-style: italic; }
 
+    ul.cv-bullets {
+      margin-top: 0.25em;
+      padding-left: 1.1em;
+      font-size: 9.25pt;
+      color: #555;
+      line-height: 1.5;
+    }
+    ul.cv-bullets li { margin-bottom: 0.15em; }
+
     /* Plain single-line entries (awards, languages, etc.) */
     .cv-entry.simple .cv-entry-title {
       font-size: 9.75pt;
       font-weight: 400;
     }
 
-    /* Publications block — stacked, no date column */
+    /* Publications block */
     .cv-pub-row {
       display: grid;
       grid-template-columns: 4.8cm 1fr;
@@ -142,39 +151,37 @@
   <header class="cv-header">
     <div>
       <div class="cv-name">Malik Jirasek</div>
-      <div class="cv-email">malikji@gmx.de</div>
+      <div class="cv-email">malikji@gmx.de &middot; +49 175 2221257</div>
     </div>
     <div class="cv-address">
-      University of Tübingen<br>
-      [Institute / Department],<br>
-      [Street and number],<br>
-      [Postcode] Tübingen, Germany
+      Institute for Theoretical Physics<br>
+      University of Tübingen, Germany
     </div>
   </header>
 
-  <!-- ============ ACADEMIC TRAINING ============ -->
+  <!-- ============ EDUCATION ============ -->
   <section class="cv-section">
     <div class="cv-section-head">
-      <div class="cv-section-title">Academic Training</div>
+      <div class="cv-section-title">Education</div>
       <div class="cv-section-rule"></div>
     </div>
 
     <div class="cv-entry">
-      <div class="cv-entry-date">2022 – present</div>
+      <div class="cv-entry-date">10/2025 – Present</div>
       <div>
-        <div class="cv-entry-title">B.Sc. [Your Degree Programme], University of Tübingen, Germany</div>
-        <div class="cv-entry-sub">
-          Thesis: <em>"[Your thesis title]"</em><br>
-          Supervisor: Prof. [Name] &middot; Focus: [Your specialisation]
-        </div>
+        <div class="cv-entry-title">Master of Science in Physics, University of Tübingen, Germany</div>
       </div>
     </div>
 
     <div class="cv-entry">
-      <div class="cv-entry-date">2022</div>
+      <div class="cv-entry-date">08/2020 – 07/2025</div>
       <div>
-        <div class="cv-entry-title">Abitur, [Your School], [City]</div>
-        <div class="cv-entry-sub">Grade: [Your Abitur grade]</div>
+        <div class="cv-entry-title">Bachelor of Science in Physics, University of Tübingen, Germany</div>
+        <div class="cv-entry-sub">
+          Final grade: 1.04 / 5.0 (German system; 1.0 = excellent)<br>
+          Thesis: <em>"Quantum Sensing beyond the Heisenberg Limit with the Boundary Time Crystal"</em><br>
+          Supervisor: Prof. Igor Lesanovsky
+        </div>
       </div>
     </div>
   </section>
@@ -187,18 +194,101 @@
     </div>
 
     <div class="cv-entry">
-      <div class="cv-entry-date">2024 – present</div>
+      <div class="cv-entry-date">10/2025 – Present</div>
       <div>
-        <div class="cv-entry-title">Research Assistant, University of Tübingen, Germany</div>
-        <div class="cv-entry-sub">[Lab / Group Name] &middot; Topic: [topic / method / experiment]</div>
+        <div class="cv-entry-title">Master of Science Thesis Research, University of Tübingen, Germany</div>
+        <ul class="cv-bullets">
+          <li>Formulating a Keldysh-field-theory description of driven-dissipative many-body systems for quantum-metrology applications, with a focus on scalable sensor architectures.</li>
+        </ul>
       </div>
     </div>
 
     <div class="cv-entry">
-      <div class="cv-entry-date">Summer 2023</div>
+      <div class="cv-entry-date">10/2024 – 07/2025</div>
       <div>
-        <div class="cv-entry-title">Internship / Lab Rotation, [Institution]</div>
-        <div class="cv-entry-sub">[Brief description of the work carried out.]</div>
+        <div class="cv-entry-title">Bachelor of Science Thesis Research, University of Tübingen, Germany</div>
+        <ul class="cv-bullets">
+          <li>Demonstrated sub-Heisenberg scaling of precision in optical-phase estimation using a boundary time crystal as a light source.</li>
+          <li>Designed and numerically benchmarked realistic measurement protocols with QuTiP simulations.</li>
+          <li>Delivered a 30-minute seminar to a 40-person theoretical-physics group; results incorporated into a manuscript under peer-review at <em>Physical Review Letters</em>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-entry-date">08/2024 – 10/2024</div>
+      <div>
+        <div class="cv-entry-title">Research Intern, Humboldt University of Berlin, Germany</div>
+        <ul class="cv-bullets">
+          <li>Extended a Fortran-based many-body solver (used by the Berlin-Modern-Optics group) to include high-precision interaction potentials for ultracold-atom tweezer arrays, achieving 10<sup>−8</sup> relative precision.</li>
+          <li>Produced a technical report used for further research by the group; currently contributing to a joint manuscript.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PUBLICATIONS ============ -->
+  <section class="cv-section">
+    <div class="cv-section-head">
+      <div class="cv-section-title">Publications</div>
+      <div class="cv-section-rule"></div>
+    </div>
+
+    <div class="cv-pub-row">
+      <div class="cv-pub-label">In preparation</div>
+      <div>
+        <p class="cv-pub-entry">
+          Matee ur Rehman, <span class="author-self">Malik Jirasek</span>, and Alejandro Saenz,
+          "Implementation of realistic interaction potentials in codes for solving the Schrödinger equation for ultracold atoms in optical tweezer arrays".
+          <em>In preparation</em>.
+        </p>
+      </div>
+    </div>
+
+    <div class="cv-pub-row">
+      <div class="cv-pub-label">Preprint / under review</div>
+      <div>
+        <p class="cv-pub-entry">
+          <span class="author-self">Malik Jirasek</span>, Igor Lesanovsky, and Albert Cabot,
+          "The Boundary Time Crystal as a light source for quantum enhanced sensing beyond the Heisenberg Limit".
+          <em>arXiv:2511.23416 [quant-ph]</em>, 2025. Submitted to <em>Physical Review Letters</em> (under review).
+          <a href="https://arxiv.org/abs/2511.23416">arXiv:2511.23416</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRESENTATIONS & CONFERENCES ============ -->
+  <section class="cv-section">
+    <div class="cv-section-head">
+      <div class="cv-section-title">Presentations &amp; Conferences</div>
+      <div class="cv-section-rule"></div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-entry-date">2026</div>
+      <div>
+        <div class="cv-entry-title">DPG Spring Meeting (SAMOP), Mainz, Germany</div>
+        <div class="cv-entry-sub">Contributed talk · Atomic, Molecular, Quantum Optics and Photonics Section</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TEACHING EXPERIENCE ============ -->
+  <section class="cv-section">
+    <div class="cv-section-head">
+      <div class="cv-section-title">Teaching Experience</div>
+      <div class="cv-section-rule"></div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-entry-date">2021 – 2025</div>
+      <div>
+        <div class="cv-entry-title">Teaching Assistant, University of Tübingen, Germany</div>
+        <ul class="cv-bullets">
+          <li>Led weekly problem-solving sessions (≈ 10h/week) and graded weekly assignments and exams.</li>
+          <li>Courses: Advanced Quantum Mechanics, Quantum Mechanics, Analytical Mechanics, Physics 1 &amp; 2, Physics Lab.</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -211,28 +301,8 @@
     </div>
 
     <div class="cv-entry simple">
-      <div class="cv-entry-date">2024</div>
-      <div class="cv-entry-title">[Scholarship / Award Name]</div>
-    </div>
-    <div class="cv-entry simple">
-      <div class="cv-entry-date">2023</div>
-      <div class="cv-entry-title">[Another Award]</div>
-    </div>
-  </section>
-
-  <!-- ============ PRESENTATIONS & CONFERENCES ============ -->
-  <section class="cv-section">
-    <div class="cv-section-head">
-      <div class="cv-section-title">Presentations &amp; Conferences</div>
-      <div class="cv-section-rule"></div>
-    </div>
-
-    <div class="cv-entry">
-      <div class="cv-entry-date">2025</div>
-      <div>
-        <div class="cv-entry-title">[Conference Name], [City, Country]</div>
-        <div class="cv-entry-sub">Talk / Poster: <em>"[Title of talk or poster]"</em></div>
-      </div>
+      <div class="cv-entry-date">2021 &amp; 2023</div>
+      <div class="cv-entry-title">Deutschlandstipendium (merit-based)</div>
     </div>
   </section>
 
@@ -244,46 +314,37 @@
     </div>
 
     <div class="cv-entry simple">
-      <div class="cv-entry-date">Laboratory</div>
-      <div class="cv-entry-title">[Technique A], [Technique B], [Instrument C]</div>
+      <div class="cv-entry-date">Programming</div>
+      <div class="cv-entry-title">Python (TensorFlow, QuTiP), Fortran, MATLAB (Simulink)</div>
     </div>
     <div class="cv-entry simple">
-      <div class="cv-entry-date">Computational</div>
-      <div class="cv-entry-title">Python, R, [Software / Tool], [Simulation method]</div>
+      <div class="cv-entry-date">Simulation &amp; Modeling</div>
+      <div class="cv-entry-title">Lindblad formalism, Keldysh formalism, stochastic calculus</div>
+    </div>
+    <div class="cv-entry simple">
+      <div class="cv-entry-date">Tools</div>
+      <div class="cv-entry-title">Linux, Git, LaTeX</div>
     </div>
     <div class="cv-entry simple">
       <div class="cv-entry-date">Languages</div>
-      <div class="cv-entry-title">German (native), English (fluent), [Other]</div>
+      <div class="cv-entry-title">German (C2), English (C1), French (B1)</div>
     </div>
   </section>
 
-  <!-- ============ PUBLICATIONS ============ -->
+  <!-- ============ SERVICE & LEADERSHIP ============ -->
   <section class="cv-section">
     <div class="cv-section-head">
-      <div class="cv-section-title">Publications</div>
+      <div class="cv-section-title">Service &amp; Leadership</div>
       <div class="cv-section-rule"></div>
     </div>
 
-    <div class="cv-pub-row">
-      <div class="cv-pub-label">Peer-reviewed</div>
-      <div>
-        <p class="cv-pub-entry">
-          <span class="author-self">M. Jirasek</span>, Co-Author A., Co-Author B.,
-          Title of your paper, <em>Journal Name</em> Vol(Issue), pages (2025),
-          <a href="#">DOI</a>
-        </p>
-      </div>
+    <div class="cv-entry simple">
+      <div class="cv-entry-date">2022 – 2026</div>
+      <div class="cv-entry-title">Student representative, faculty appointment committee (ML in physics)</div>
     </div>
-
-    <div class="cv-pub-row">
-      <div class="cv-pub-label">Preprint</div>
-      <div>
-        <p class="cv-pub-entry">
-          <span class="author-self">M. Jirasek</span>, Co-Author A.,
-          Title of another paper or preprint,
-          <a href="#">arXiv:XXXX.XXXXX</a>
-        </p>
-      </div>
+    <div class="cv-entry simple">
+      <div class="cv-entry-date">2022 – 2025</div>
+      <div class="cv-entry-title">Treasurer &amp; member, physics student council</div>
     </div>
   </section>
 
