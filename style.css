@@ -597,30 +597,6 @@ img { max-width: 100%; display: block; }
 }
 
 /* ============================================================
-   INTERESTS
-   ============================================================ */
-.interests-layout {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-}
-.interest-heading {
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin-bottom: 0.8rem;
-  color: var(--ink);
-}
-.interest-block p + p { margin-top: 0.8rem; }
-.interest-list {
-  list-style: disc;
-  margin-left: 1.3rem;
-  margin-top: 0.6rem;
-  color: var(--ink-light);
-  font-size: 0.95rem;
-  line-height: 1.8;
-}
-
-/* ============================================================
    FOOTER
    ============================================================ */
 .site-footer {

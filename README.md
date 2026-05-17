@@ -10,7 +10,6 @@ A clean, minimal academic personal website for GitHub Pages.
 | `cv.html` | Online CV (full-page, linked to PDF download) |
 | `publications.html` | Publications list |
 | `projects.html` | Research projects |
-| `interests.html` | Scientific & personal interests |
 | `style.css` | All styles |
 | `main.js` | Mobile nav + fade-in |
 | `cv.pdf` | Downloadable PDF CV for applications |
