@@ -1,0 +1,1138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Nearly There</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%232F5D50'/%3E%3Cpath d='M6 16c2.5-7 5-7 7 0s4 5 6 0 3.5-3 5 0 2 1 3 0' stroke='%23FBF9F5' stroke-width='2.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FBF9F5;
+    --surface: #F3EFE6;
+    --paper: #FFFDF9;
+    --line: #E2DBD0;
+    --line-strong: #CFC5B6;
+    --grid-strong: #7A7166;
+    --ink: #1F2421;
+    --muted: #5C6460;
+    --sage: #2F5D50;
+    --sage-hover: #244A3F;
+    --sage-soft: #BCD2C6;
+    --terracotta: #C46D4E;
+    --terracotta-ink: #9A4A2E;
+    --wash: #E6EFEA;
+    --serif: 'Newsreader', 'EB Garamond', Georgia, serif;
+    --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --radius: 16px;
+  }
+
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background:
+      radial-gradient(1100px 520px at 50% -180px, #F4EDE0 0%, rgba(244, 237, 224, 0) 70%),
+      var(--bg);
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  main {
+    padding: clamp(40px, 9vw, 96px) 16px 32px;
+  }
+
+  .view { max-width: 720px; margin: 0 auto; }
+  .view-wide { max-width: 860px; }
+
+  h1, h2 { font-family: var(--serif); font-weight: 400; margin: 0; letter-spacing: -0.01em; }
+  h1 { font-size: clamp(2.4rem, 6.5vw, 3.6rem); line-height: 1.08; }
+  h1:focus { outline: none; }
+  h2 { font-size: 1.6rem; line-height: 1.25; }
+
+  .eyebrow {
+    margin: 0 0 14px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage);
+  }
+
+  .lede {
+    margin: 18px 0 0;
+    max-width: 60ch;
+    font-size: 1.075rem;
+    color: var(--muted);
+  }
+
+  a { color: var(--sage); }
+  :focus-visible { outline: 2px solid var(--sage); outline-offset: 3px; }
+
+  /* ---------- Home ---------- */
+  .wave { display: block; width: 210px; height: 28px; margin-top: 36px; }
+
+  .choices {
+    display: grid;
+    gap: 20px;
+    margin-top: 48px;
+  }
+  @media (min-width: 640px) { .choices { grid-template-columns: 1fr 1fr; } }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+
+  .choice {
+    display: flex;
+    flex-direction: column;
+    padding: 28px 28px 26px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: border-color .2s ease, transform .2s ease, background-color .2s ease;
+  }
+  .choice:hover { border-color: var(--sage-soft); background: #F0EDE3; transform: translateY(-2px); }
+  .choice .icon { width: 44px; height: 44px; margin-bottom: 22px; }
+  .choice .eyebrow { margin-bottom: 6px; color: var(--sage); }
+  .choice p { margin: 10px 0 22px; color: var(--muted); }
+  .choice .go { margin-top: auto; font-weight: 500; color: var(--sage); font-size: 0.95rem; }
+  .choice .go span { display: inline-block; transition: transform .2s ease; }
+  .choice:hover .go span { transform: translateX(4px); }
+
+  .aside {
+    margin: 44px auto 0;
+    max-width: 44ch;
+    text-align: center;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--muted);
+  }
+
+  /* ---------- Shared ---------- */
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 36px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    min-height: 32px;
+  }
+  .back:hover { color: var(--sage); }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 1.3em;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font: 500 0.95rem/1 var(--sans);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+  }
+  .btn-primary { background: var(--sage); color: var(--bg); }
+  .btn-primary:hover { background: var(--sage-hover); }
+  .btn-secondary { background: transparent; border-color: var(--line-strong); color: var(--ink); }
+  .btn-secondary:hover { background: var(--wash); border-color: var(--sage-soft); }
+  .btn:disabled { opacity: .4; cursor: default; }
+  .btn-secondary:disabled:hover { background: transparent; border-color: var(--line-strong); }
+
+  /* ---------- Sudoku ---------- */
+  .sudoku-layout {
+    display: grid;
+    gap: 28px;
+    justify-items: center;
+    margin-top: 40px;
+  }
+  @media (min-width: 820px) {
+    .sudoku-layout {
+      grid-template-columns: minmax(0, 468px) 290px;
+      justify-content: center;
+      align-items: start;
+      gap: 44px;
+    }
+  }
+
+  .board-wrap { width: 100%; max-width: 468px; }
+
+  .board {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    width: 100%;
+    aspect-ratio: 1;
+    background: var(--paper);
+    border: 2px solid var(--grid-strong);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .cell {
+    appearance: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: transparent;
+    color: var(--sage);
+    font: 500 clamp(1.2rem, 5.4vw, 1.8rem)/1 var(--serif);
+    cursor: pointer;
+    transition: background-color .12s ease;
+  }
+  .cell.br { border-right: 2px solid var(--grid-strong); }
+  .cell.bb { border-bottom: 2px solid var(--grid-strong); }
+  .cell.nr { border-right: 0; }
+  .cell.nb { border-bottom: 0; }
+  .cell.given { color: var(--ink); }
+  .cell.peer { background: #F5F1E9; }
+  .cell.same { background: var(--wash); }
+  .cell.sel { background: #D3E3DA; box-shadow: inset 0 0 0 2px var(--sage); }
+  .cell.conflict { color: var(--terracotta-ink); background: #F8E7DF; }
+  .cell.conflict.sel { background: #F3DACE; box-shadow: inset 0 0 0 2px var(--terracotta); }
+  .cell.wrong { background: #F3D9CD; color: var(--terracotta-ink); }
+  .cell:focus-visible { outline: none; box-shadow: inset 0 0 0 2px var(--sage); }
+
+  .notes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 100%;
+    height: 100%;
+    padding: 2px;
+    font: 500 clamp(0.5rem, 2.2vw, 0.72rem)/1 var(--sans);
+    color: var(--muted);
+  }
+  .notes span { display: flex; align-items: center; justify-content: center; }
+
+  .status {
+    min-height: 1.7em;
+    margin: 14px 0 0;
+    text-align: center;
+    font-size: 0.92rem;
+    color: var(--muted);
+  }
+
+  .controls { width: 100%; max-width: 468px; display: grid; gap: 18px; }
+
+  .seg {
+    display: flex;
+    padding: 4px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+  }
+  .seg button {
+    flex: 1;
+    min-height: 36px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    font: 500 0.85rem/1 var(--sans);
+    color: var(--muted);
+    cursor: pointer;
+    transition: background-color .15s ease, color .15s ease;
+  }
+  .seg button:hover { color: var(--ink); }
+  .seg button[aria-pressed="true"] { background: var(--sage); color: var(--bg); }
+
+  .numpad { display: grid; grid-template-columns: repeat(9, 1fr); gap: 6px; }
+  .num {
+    position: relative;
+    min-height: 50px;
+    min-width: 0;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--paper);
+    color: var(--ink);
+    font: 500 1.35rem/1 var(--serif);
+    cursor: pointer;
+    transition: background-color .15s ease, border-color .15s ease, opacity .2s ease;
+  }
+  .num:hover { background: var(--wash); border-color: var(--sage-soft); }
+  .num small {
+    position: absolute;
+    right: 6px;
+    bottom: 5px;
+    font: 500 0.62rem/1 var(--sans);
+    color: var(--muted);
+  }
+  .num.done { opacity: .35; }
+  @media (max-width: 420px) { .num small { display: none; } }
+  @media (min-width: 820px) {
+    .numpad { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .num { min-height: 66px; font-size: 1.7rem; }
+  }
+
+  .actions { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+  .act {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    min-width: 0;
+    padding: 10px 2px 8px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--muted);
+    font: 500 0.74rem/1 var(--sans);
+    cursor: pointer;
+    transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .act svg { width: 20px; height: 20px; }
+  .act:hover { background: var(--surface); color: var(--ink); }
+  .act:disabled { opacity: .4; cursor: default; }
+  .act:disabled:hover { background: transparent; color: var(--muted); }
+  .act[aria-pressed="true"] { background: var(--wash); border-color: var(--sage-soft); color: var(--sage); }
+
+  .new-row { display: flex; justify-content: center; }
+
+  .keys { margin: 0; font-size: 0.8rem; line-height: 1.6; color: var(--muted); text-align: center; }
+  @media (hover: none) { .keys { display: none; } }
+
+  .solved { padding: 28px; }
+  .solved .eyebrow { color: var(--terracotta-ink); }
+  .solved p { margin: 12px 0 0; color: var(--muted); }
+  .solved ul { margin: 14px 0 0; padding: 0; list-style: none; }
+  .solved li { position: relative; padding-left: 20px; margin-top: 6px; color: var(--ink); }
+  .solved li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 0.68em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--sage);
+  }
+  .solved .row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+
+  /* ---------- Quotes ---------- */
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 36px; }
+  .chip {
+    min-height: 40px;
+    padding: 0 1em;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    font: 500 0.875rem/1 var(--sans);
+    color: var(--muted);
+    cursor: pointer;
+    transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+  }
+  .chip:hover { color: var(--ink); border-color: var(--line-strong); }
+  .chip[aria-pressed="true"] { background: var(--wash); border-color: var(--sage-soft); color: var(--sage); }
+
+  .quote { margin: 20px 0 0; padding: clamp(28px, 6vw, 56px); }
+  .quote-inner { transition: opacity .25s ease, transform .25s ease; }
+  .quote-inner.out { opacity: 0; transform: translateY(6px); }
+  .quote-mark {
+    display: block;
+    height: 0.62em;
+    font: 400 4.5rem/1 var(--serif);
+    color: var(--terracotta);
+  }
+  .quote blockquote {
+    margin: 0;
+    font: 400 clamp(1.4rem, 3.6vw, 1.95rem)/1.42 var(--serif);
+    white-space: pre-line;
+    text-wrap: pretty;
+  }
+  .quote figcaption { margin-top: 26px; font-size: 0.95rem; color: var(--muted); }
+  .quote .author { font-weight: 600; color: var(--ink); }
+  .quote .author::before { content: '— '; color: var(--terracotta); font-weight: 400; }
+  .quote .source { font-family: var(--serif); font-style: italic; font-size: 1.05rem; }
+  .quote .note {
+    margin: 22px 0 0;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    font-size: 0.95rem;
+    color: var(--terracotta-ink);
+  }
+
+  .quote-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 20px; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    padding: 48px 16px 56px;
+    text-align: center;
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--muted);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <!-- ================= Home ================= -->
+  <section class="view" data-view="home">
+    <header>
+      <p class="eyebrow" id="greeting">Hello</p>
+      <h1 tabindex="-1">You’re nearly there.</h1>
+      <p class="lede" id="lede">Whatever today looks like, it counts. Take a few minutes for yourself: a small puzzle to rest the writing part of your brain, or a few words from people who have been exactly here before.</p>
+      <svg class="wave" viewBox="0 0 210 28" aria-hidden="true">
+        <path d="M2 14 Q12 0 22 14 Q32 26 42 14 Q52 4 62 14 Q72 22 82 14 Q92 7 102 14 Q112 19 122 14 Q132 10 142 14 Q152 16.5 162 14 Q172 12.5 182 14 L196 14" fill="none" stroke="#2F5D50" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="203" cy="14" r="3" fill="#C46D4E"/>
+      </svg>
+    </header>
+
+    <div class="choices">
+      <a class="choice card" href="#sudoku">
+        <svg class="icon" viewBox="0 0 44 44" aria-hidden="true">
+          <rect x="2" y="2" width="40" height="40" rx="8" fill="#FFFDF9" stroke="#7A7166" stroke-width="1.5"/>
+          <path d="M15.3 2v40M28.7 2v40M2 15.3h40M2 28.7h40" stroke="#CFC5B6" stroke-width="1.2"/>
+          <rect x="15.9" y="15.9" width="12.2" height="12.2" fill="#E6EFEA"/>
+          <text x="22" y="26" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="11" fill="#2F5D50">7</text>
+          <circle cx="8.6" cy="35.4" r="2.4" fill="#C46D4E"/>
+        </svg>
+        <p class="eyebrow">Take a break</p>
+        <h2>A quiet sudoku</h2>
+        <p>No deadlines, no citations. Just nine little boxes that always work out in the end.</p>
+        <span class="go">Start a puzzle <span>→</span></span>
+      </a>
+      <a class="choice card" href="#words">
+        <svg class="icon" viewBox="0 0 44 44" aria-hidden="true">
+          <circle cx="22" cy="22" r="20.5" fill="#FFFDF9" stroke="#CFC5B6" stroke-width="1.5"/>
+          <text x="22" y="37" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="34" fill="#C46D4E">“</text>
+        </svg>
+        <p class="eyebrow">Find some words</p>
+        <h2>Something kind to read</h2>
+        <p>Thoughts on finishing things, on heavy days, and from physicists who also once had a deadline.</p>
+        <span class="go">Read a few <span>→</span></span>
+      </a>
+    </div>
+
+    <p class="aside">There’s no wrong choice here. Rest is part of the work, too.</p>
+  </section>
+
+  <!-- ================= Sudoku ================= -->
+  <section class="view view-wide" data-view="sudoku" hidden>
+    <a href="#" class="back">← Back</a>
+    <header>
+      <p class="eyebrow">Take a break</p>
+      <h1 tabindex="-1">A quiet sudoku</h1>
+      <p class="lede">No timer, no score. Just one cell at a time.</p>
+    </header>
+
+    <div class="sudoku-layout">
+      <div class="board-wrap">
+        <div class="board" id="board" role="group" aria-label="Sudoku board"></div>
+        <p class="status" id="status" aria-live="polite"></p>
+      </div>
+
+      <div class="controls">
+        <div class="seg" role="group" aria-label="Difficulty">
+          <button type="button" data-level="gentle" aria-pressed="false">Gentle</button>
+          <button type="button" data-level="steady" aria-pressed="false">Steady</button>
+          <button type="button" data-level="absorbing" aria-pressed="false">Absorbing</button>
+        </div>
+
+        <div id="play-controls" class="controls" style="max-width:none">
+          <div class="numpad" id="numpad" aria-label="Numbers"></div>
+          <div class="actions">
+            <button type="button" class="act" id="undo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>
+              Undo
+            </button>
+            <button type="button" class="act" id="erase">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 21-4.3-4.3a1 1 0 0 1 0-1.4l10-10a1 1 0 0 1 1.4 0l5.6 5.6a1 1 0 0 1 0 1.4L11 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
+              Erase
+            </button>
+            <button type="button" class="act" id="notes" aria-pressed="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+              Notes
+            </button>
+            <button type="button" class="act" id="hint">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2Z"/></svg>
+              Hint
+            </button>
+            <button type="button" class="act" id="check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              Check
+            </button>
+          </div>
+          <div class="new-row">
+            <button type="button" class="btn btn-secondary" id="new">New puzzle</button>
+          </div>
+          <p class="keys">Arrow keys to move · 1–9 to fill · N for notes · Backspace to clear</p>
+        </div>
+
+        <div class="solved card" id="solved" hidden>
+          <p class="eyebrow">Solved</p>
+          <h2 tabindex="-1">Every constraint satisfied.</h2>
+          <p>Eighty-one cells, all consistent. That’s the same patience your thesis is made of.</p>
+          <p>Maybe, for the next few minutes:</p>
+          <ul>
+            <li>A glass of water</li>
+            <li>A stretch, or a look out of the window</li>
+            <li>Then one small thing: a paragraph, a caption, a reference</li>
+          </ul>
+          <div class="row">
+            <button type="button" class="btn btn-primary" id="again">Another puzzle</button>
+            <a class="btn btn-secondary" href="#words">Something kind to read</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Quotes ================= -->
+  <section class="view" data-view="words" hidden>
+    <a href="#" class="back">← Back</a>
+    <header>
+      <p class="eyebrow">Find some words</p>
+      <h1 tabindex="-1">Something kind to read</h1>
+      <p class="lede">Take what you need and leave the rest.</p>
+    </header>
+
+    <div class="chips" role="group" aria-label="Kind of quote" id="chips"></div>
+
+    <figure class="quote card">
+      <div class="quote-inner" id="quote-inner" aria-live="polite">
+        <span class="quote-mark" aria-hidden="true">“</span>
+        <blockquote id="q-text"></blockquote>
+        <figcaption><span class="author" id="q-author"></span><span class="source" id="q-source"></span></figcaption>
+        <p class="note" id="q-note" hidden></p>
+      </div>
+    </figure>
+
+    <div class="quote-nav">
+      <button type="button" class="btn btn-secondary" id="q-prev">← Previous</button>
+      <button type="button" class="btn btn-primary" id="q-next">Another one</button>
+    </div>
+  </section>
+
+</main>
+
+<script>
+(() => {
+  'use strict';
+
+  // Put a name here to personalise the greeting, e.g. 'Anna'.
+  const NAME = '';
+
+  const store = {
+    get(key) {
+      try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : null; } catch (e) { return null; }
+    },
+    set(key, value) {
+      try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) { /* storage unavailable */ }
+    }
+  };
+
+  const shuffle = (arr) => {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  };
+
+  /* ---------------- Greeting ---------------- */
+  (function greet() {
+    const h = new Date().getHours();
+    let g = h < 5 ? 'Still up' : h < 12 ? 'Good morning' : h < 18 ? 'Good afternoon' : 'Good evening';
+    document.getElementById('greeting').textContent = NAME ? `${g}, ${NAME}` : g;
+    if (h < 5) {
+      document.getElementById('lede').textContent =
+        'It’s late. Whatever is left will look clearer after some sleep. If you need a moment before bed, a small puzzle or a few kind words are right here.';
+    }
+  })();
+
+  /* ---------------- Routing ---------------- */
+  let currentView = 'home';
+  let routedOnce = false;
+
+  function route() {
+    const key = location.hash.replace('#', '');
+    const target = (key === 'sudoku' || key === 'words') ? key : 'home';
+    currentView = target;
+    document.querySelectorAll('[data-view]').forEach(v => { v.hidden = v.dataset.view !== target; });
+    if (target === 'sudoku') Sudoku.ensure();
+    if (target === 'words') Words.ensure();
+    window.scrollTo(0, 0);
+    if (routedOnce) {
+      const h = document.querySelector(`[data-view="${target}"] h1`);
+      if (h) h.focus({ preventScroll: true });
+    }
+    routedOnce = true;
+  }
+
+  /* ================================================================
+     Quotes
+     ================================================================ */
+  const Words = (() => {
+    // c: categories. s: source. n: an optional small note.
+    const QUOTES = [
+      // On finishing
+      { c: ['finish', 'physics'], t: 'One never notices what has been done; one can only see what remains to be done.', a: 'Marie Curie', s: 'letter to her brother, 1894', n: 'Worth remembering when the list looks long. Look back for a second at how much is already written.' },
+      { c: ['finish'], t: 'Bird by bird, buddy. Just take it bird by bird.', a: 'Anne Lamott', s: 'Bird by Bird', n: 'One section, then the next one.' },
+      { c: ['finish'], t: 'Perfectionism is the voice of the oppressor, the enemy of the people. It will keep you cramped and insane your whole life.', a: 'Anne Lamott', s: 'Bird by Bird' },
+      { c: ['finish'], t: 'Almost all good writing begins with terrible first efforts. You need to start somewhere.', a: 'Anne Lamott', s: 'Bird by Bird' },
+      { c: ['finish'], t: 'A poem is never finished, only abandoned.', a: 'after Paul Valéry', s: '', n: 'Theses too. Letting it go is part of the craft, not a failure of it.' },
+      { c: ['finish'], t: 'Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.', a: 'Antoine de Saint-Exupéry', s: 'Wind, Sand and Stars' },
+      { c: ['finish'], t: 'No great thing is created suddenly.', a: 'Epictetus', s: 'Discourses' },
+      { c: ['finish'], t: 'Hofstadter’s Law: It always takes longer than you expect, even when you take into account Hofstadter’s Law.', a: 'Douglas Hofstadter', s: 'Gödel, Escher, Bach', n: 'So if this took longer than planned, that isn’t you. That’s a law.' },
+      { c: ['finish'], t: 'The best way out is always through.', a: 'Robert Frost', s: 'A Servant to Servants' },
+      { c: ['finish', 'physics'], t: 'Life is like riding a bicycle. To keep your balance you must keep moving.', a: 'Albert Einstein', s: 'letter to his son Eduard, 1930' },
+      { c: ['finish'], t: 'The scariest moment is always just before you start.', a: 'Stephen King', s: 'On Writing' },
+      { c: ['finish'], t: 'It is good to have an end to journey toward; but it is the journey that matters, in the end.', a: 'Ursula K. Le Guin', s: 'The Left Hand of Darkness' },
+      { c: ['finish'], t: 'Ever tried. Ever failed. No matter. Try again. Fail again. Fail better.', a: 'Samuel Beckett', s: 'Worstward Ho' },
+      { c: ['finish'], t: 'I love deadlines. I love the whooshing noise they make as they go by.', a: 'Douglas Adams', s: 'The Salmon of Doubt', n: 'Not advice. Just a reminder that everyone finds deadlines a bit absurd.' },
+      { c: ['finish'], t: 'Festina lente.\nMake haste slowly.', a: 'Augustus', s: 'as recorded by Suetonius' },
+      { c: ['finish', 'heavy'], t: 'All we have to decide is what to do with the time that is given us.', a: 'J. R. R. Tolkien', s: 'The Fellowship of the Ring' },
+
+      // For a heavy day
+      { c: ['heavy'], t: 'We suffer more often in imagination than in reality.', a: 'Seneca', s: 'Letters to Lucilius, XIII' },
+      { c: ['heavy'], t: 'Never let the future disturb you. You will meet it, if you have to, with the same weapons of reason which today arm you against the present.', a: 'Marcus Aurelius', s: 'Meditations, VII.8' },
+      { c: ['heavy'], t: 'In the depth of winter, I finally learned that within me there lay an invincible summer.', a: 'Albert Camus', s: 'Return to Tipasa' },
+      { c: ['heavy'], t: 'One must imagine Sisyphus happy.', a: 'Albert Camus', s: 'The Myth of Sisyphus', n: 'Some days the boulder is called “Chapter 4”.' },
+      { c: ['heavy'], t: 'Almost everything will work again if you unplug it for a few minutes, including you.', a: 'Anne Lamott', s: 'TED talk, 2017', n: 'This page is a decent place to unplug for a little while.' },
+      { c: ['heavy'], t: 'Rest is not idleness, and to lie sometimes on the grass under trees on a summer’s day, listening to the murmur of the water, or watching the clouds float across the sky, is by no means a waste of time.', a: 'John Lubbock', s: 'The Use of Life' },
+      { c: ['heavy'], t: 'Be patient toward all that is unsolved in your heart and try to love the questions themselves.', a: 'Rainer Maria Rilke', s: 'Letters to a Young Poet' },
+      { c: ['heavy'], t: 'And now that you don’t have to be perfect, you can be good.', a: 'John Steinbeck', s: 'East of Eden' },
+      { c: ['heavy'], t: 'I am not afraid of storms, for I am learning how to sail my ship.', a: 'Louisa May Alcott', s: 'Little Women' },
+      { c: ['heavy'], t: 'You do not have to be good.\nYou do not have to walk on your knees\nfor a hundred miles through the desert, repenting.\nYou only have to let the soft animal of your body\nlove what it loves.', a: 'Mary Oliver', s: 'Wild Geese' },
+      { c: ['heavy'], t: 'Life can only be understood backwards; but it must be lived forwards.', a: 'Søren Kierkegaard', s: 'Journals, 1843' },
+      { c: ['heavy'], t: 'There is a crack, a crack in everything.\nThat’s how the light gets in.', a: 'Leonard Cohen', s: 'Anthem' },
+      { c: ['heavy'], t: 'All shall be well, and all shall be well, and all manner of thing shall be well.', a: 'Julian of Norwich', s: 'Revelations of Divine Love' },
+      { c: ['heavy'], t: 'Not everything that is faced can be changed, but nothing can be changed until it is faced.', a: 'James Baldwin', s: 'As Much Truth As One Can Bear' },
+      { c: ['heavy'], t: 'The cure for anything is salt water: sweat, tears, or the sea.', a: 'Isak Dinesen', s: 'Seven Gothic Tales', n: 'Or a glass of water and a short walk around the block.' },
+      { c: ['heavy'], t: '“Hope” is the thing with feathers –\nThat perches in the soul –', a: 'Emily Dickinson', s: '' },
+
+      // From physicists
+      { c: ['physics'], t: 'Life is not easy for any of us. But what of that? We must have perseverance and above all confidence in ourselves. We must believe that we are gifted for something, and that this thing, at whatever cost, must be attained.', a: 'Marie Curie', s: 'quoted in Eve Curie, Madame Curie' },
+      { c: ['physics', 'heavy'], t: 'Life need not be easy, provided only that it is not empty.', a: 'Lise Meitner', s: '' },
+      { c: ['physics'], t: 'The first principle is that you must not fool yourself, and you are the easiest person to fool.', a: 'Richard Feynman', s: 'Cargo Cult Science, Caltech, 1974' },
+      { c: ['physics'], t: 'I think I can safely say that nobody understands quantum mechanics.', a: 'Richard Feynman', s: 'The Character of Physical Law', n: 'So if a paragraph feels hard to pin down, you are in excellent company.' },
+      { c: ['physics'], t: 'Nature uses only the longest threads to weave her patterns, so that each small piece of her fabric reveals the organization of the entire tapestry.', a: 'Richard Feynman', s: 'The Character of Physical Law' },
+      { c: ['physics'], t: 'What I cannot create, I do not understand.', a: 'Richard Feynman', s: 'on his blackboard, 1988', n: 'Writing it all down is how you find out how much you really understand. (It’s a lot.)' },
+      { c: ['physics'], t: 'An expert is a person who has made all the mistakes that can be made in a very narrow field.', a: 'Niels Bohr', s: 'as recalled by Edward Teller', n: 'Which, by now, describes you.' },
+      { c: ['physics'], t: 'The important thing is not to stop questioning. Curiosity has its own reason for existing.', a: 'Albert Einstein', s: 'LIFE magazine, 1955' },
+      { c: ['physics', 'finish'], t: 'If I have seen further it is by standing on the shoulders of Giants.', a: 'Isaac Newton', s: 'letter to Robert Hooke, 1675', n: 'Your bibliography is proof you’re in good company.' },
+      { c: ['physics', 'heavy'], t: 'For small creatures such as we the vastness is bearable only through love.', a: 'Carl Sagan', s: 'Contact' },
+      { c: ['physics'], t: 'We are a way for the cosmos to know itself.', a: 'Carl Sagan', s: 'Cosmos' },
+      { c: ['physics', 'heavy'], t: 'Remember to look up at the stars and not down at your feet.', a: 'Stephen Hawking', s: '' },
+      { c: ['physics'], t: 'The universe is under no obligation to make sense to you.', a: 'Neil deGrasse Tyson', s: '', n: 'Your thesis, however, now makes sense of a small piece of it.' },
+
+      // From Malik
+      { c: ['malik'], t: 'Wherever you are, I have you with me in my heart.', a: 'Malik', s: '', n: '' },
+      { c: ['malik'], t: 'Show the world how to do it because you know how to do it best.', a: 'Malik', s: '', n: '' },
+      { c: ['malik'], t: 'In case you hit a wall, walk around it. :-)', a: 'Malik', s: '', n: '' },
+      { c: ['malik'], t: 'Everyday you show me what is possible together, and everyday I love you more. <3', a: 'Malik', s: '', n: '' },
+      { c: ['malik'], t: 'Do you even know how strong you are?', a: 'Malik', s: '', n: '' },
+      { c: ['malik'], t: 'Diamonds are only formed under pressure. :-)', a: 'Malik', s: '', n: '' },
+    ];
+
+    const CATS = [
+      ['all', 'Everything'],
+      ['finish', 'On finishing'],
+      ['heavy', 'For a heavy day'],
+      ['physics', 'From physicists'],
+      ['malik', 'From Malik'],
+    ];
+
+    const el = {
+      chips: document.getElementById('chips'),
+      inner: document.getElementById('quote-inner'),
+      text: document.getElementById('q-text'),
+      author: document.getElementById('q-author'),
+      source: document.getElementById('q-source'),
+      note: document.getElementById('q-note'),
+      prev: document.getElementById('q-prev'),
+      next: document.getElementById('q-next')
+    };
+
+    let cat = store.get('nearlythere.quotecat') || 'all';
+    if (!CATS.some(([k]) => k === cat)) cat = 'all';
+    let deck = [];
+    let pos = 0;
+    let ready = false;
+
+    const pool = () => QUOTES.map((_, i) => i).filter(i => cat === 'all' || QUOTES[i].c.includes(cat));
+
+    function freshDeck() {
+      deck = shuffle(pool());
+      pos = 0;
+    }
+
+    function paint() {
+      const q = QUOTES[deck[pos]];
+      el.text.textContent = q.t;
+      el.author.textContent = q.a;
+      el.source.textContent = q.s ? `, ${q.s}` : '';
+      el.note.textContent = q.n || '';
+      el.note.hidden = !q.n;
+      el.prev.disabled = pos === 0;
+    }
+
+    function show() {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce || !ready) { paint(); return; }
+      el.inner.classList.add('out');
+      setTimeout(() => { paint(); el.inner.classList.remove('out'); }, 200);
+    }
+
+    function next() {
+      pos++;
+      if (pos >= deck.length) {
+        const last = deck[deck.length - 1];
+        const more = shuffle(pool());
+        if (more.length > 1 && more[0] === last) [more[0], more[1]] = [more[1], more[0]];
+        deck = deck.concat(more);
+      }
+      show();
+    }
+
+    function prev() {
+      if (pos > 0) { pos--; show(); }
+    }
+
+    function renderChips() {
+      el.chips.innerHTML = '';
+      CATS.forEach(([key, label]) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'chip';
+        b.textContent = label;
+        b.setAttribute('aria-pressed', String(key === cat));
+        b.addEventListener('click', () => {
+          if (key === cat) return;
+          cat = key;
+          store.set('nearlythere.quotecat', cat);
+          renderChips();
+          freshDeck();
+          show();
+        });
+        el.chips.appendChild(b);
+      });
+    }
+
+    el.next.addEventListener('click', next);
+    el.prev.addEventListener('click', prev);
+
+    document.addEventListener('keydown', (e) => {
+      if (currentView !== 'words' || e.ctrlKey || e.metaKey || e.altKey) return;
+      if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+    });
+
+    return {
+      ensure() {
+        if (ready) return;
+        renderChips();
+        freshDeck();
+        paint();
+        ready = true;
+      }
+    };
+  })();
+
+  /* ================================================================
+     Sudoku
+     ================================================================ */
+  const Sudoku = (() => {
+    const ALL = 0x3FE; // bits 1..9
+    const R = [], C = [], B = [];
+    for (let i = 0; i < 81; i++) {
+      R[i] = (i / 9) | 0;
+      C[i] = i % 9;
+      B[i] = ((R[i] / 3) | 0) * 3 + ((C[i] / 3) | 0);
+    }
+    const PEERS = [];
+    for (let i = 0; i < 81; i++) {
+      PEERS[i] = [];
+      for (let j = 0; j < 81; j++) {
+        if (j !== i && (R[j] === R[i] || C[j] === C[i] || B[j] === B[i])) PEERS[i].push(j);
+      }
+    }
+    const isPeer = (a, b) => R[a] === R[b] || C[a] === C[b] || B[a] === B[b];
+    const bits = (m) => { let c = 0; while (m) { m &= m - 1; c++; } return c; };
+
+    const LEVELS = { gentle: 40, steady: 32, absorbing: 26 };
+    const LABEL = { gentle: 'Gentle', steady: 'Steady', absorbing: 'Absorbing' };
+    const KEY = 'nearlythere.sudoku';
+
+    // Backtracking search with a most-constrained-cell heuristic.
+    function search(grid, limit, randomize) {
+      const g = grid.slice();
+      const rows = new Array(9).fill(0), cols = new Array(9).fill(0), boxes = new Array(9).fill(0);
+      for (let i = 0; i < 81; i++) {
+        if (g[i]) { const b = 1 << g[i]; rows[R[i]] |= b; cols[C[i]] |= b; boxes[B[i]] |= b; }
+      }
+      let count = 0, solution = null;
+
+      function rec() {
+        let best = -1, bestMask = 0, bestN = 10;
+        for (let i = 0; i < 81; i++) {
+          if (g[i]) continue;
+          const m = ALL & ~(rows[R[i]] | cols[C[i]] | boxes[B[i]]);
+          const n = bits(m);
+          if (n < bestN) { best = i; bestMask = m; bestN = n; if (n <= 1) break; }
+        }
+        if (best < 0) { count++; if (!solution) solution = g.slice(); return count >= limit; }
+        if (bestN === 0) return false;
+        const digits = [];
+        for (let d = 1; d <= 9; d++) if (bestMask & (1 << d)) digits.push(d);
+        if (randomize) shuffle(digits);
+        const r = R[best], c = C[best], bx = B[best];
+        for (const d of digits) {
+          const bit = 1 << d;
+          g[best] = d; rows[r] |= bit; cols[c] |= bit; boxes[bx] |= bit;
+          if (rec()) return true;
+          g[best] = 0; rows[r] &= ~bit; cols[c] &= ~bit; boxes[bx] &= ~bit;
+        }
+        return false;
+      }
+
+      rec();
+      return { count, solution };
+    }
+
+    function generate(level) {
+      const target = LEVELS[level] || LEVELS.gentle;
+      const solution = search(new Array(81).fill(0), 1, true).solution;
+      const puzzle = solution.slice();
+      let clues = 81;
+      for (const i of shuffle([...Array(81).keys()])) {
+        if (clues <= target) break;
+        const j = 80 - i; // keep the classic symmetric look
+        if (!puzzle[i]) continue;
+        const a = puzzle[i], b = puzzle[j];
+        puzzle[i] = 0; puzzle[j] = 0;
+        if (search(puzzle, 2, false).count !== 1) { puzzle[i] = a; puzzle[j] = b; }
+        else clues -= (i === j ? 1 : 2);
+      }
+      return { puzzle, solution };
+    }
+
+    const el = {
+      board: document.getElementById('board'),
+      status: document.getElementById('status'),
+      numpad: document.getElementById('numpad'),
+      undo: document.getElementById('undo'),
+      erase: document.getElementById('erase'),
+      notes: document.getElementById('notes'),
+      hint: document.getElementById('hint'),
+      check: document.getElementById('check'),
+      newBtn: document.getElementById('new'),
+      again: document.getElementById('again'),
+      play: document.getElementById('play-controls'),
+      solved: document.getElementById('solved'),
+      levels: [...document.querySelectorAll('[data-level]')]
+    };
+
+    let S = null;          // { puzzle, solution, values, notes, level, solved }
+    let sel = -1;
+    let notesMode = false;
+    let history = [];
+    let wrong = new Set();
+    let wrongTimer = null;
+    const cells = [];
+    const numBtns = [];
+
+    // Build the board once.
+    for (let i = 0; i < 81; i++) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      let base = 'cell';
+      if (C[i] === 2 || C[i] === 5) base += ' br';
+      if (R[i] === 2 || R[i] === 5) base += ' bb';
+      if (C[i] === 8) base += ' nr';
+      if (R[i] === 8) base += ' nb';
+      b.dataset.base = base;
+      b.addEventListener('click', () => { sel = i; render(); });
+      el.board.appendChild(b);
+      cells.push(b);
+    }
+    for (let d = 1; d <= 9; d++) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'num';
+      b.innerHTML = `${d}<small></small>`;
+      b.addEventListener('click', () => input(d));
+      el.numpad.appendChild(b);
+      numBtns.push(b);
+    }
+
+    function valid(s) {
+      return s && Array.isArray(s.puzzle) && s.puzzle.length === 81 &&
+        Array.isArray(s.solution) && s.solution.length === 81 &&
+        Array.isArray(s.values) && s.values.length === 81 &&
+        Array.isArray(s.notes) && s.notes.length === 81 && LEVELS[s.level];
+    }
+
+    const save = () => store.set(KEY, S);
+    const say = (msg) => { el.status.textContent = msg; };
+
+    function newGame(level) {
+      const { puzzle, solution } = generate(level);
+      S = { puzzle, solution, values: puzzle.slice(), notes: new Array(81).fill(0), level, solved: false };
+      history = [];
+      sel = -1;
+      wrong.clear();
+      say('');
+      save();
+      render();
+    }
+
+    function requestNew(level) {
+      const inProgress = S && !S.solved && S.values.some((v, i) => v && !S.puzzle[i]);
+      if (inProgress && !window.confirm(`Start a new ${LABEL[level].toLowerCase()} puzzle? This one will be cleared.`)) return;
+      newGame(level);
+    }
+
+    function pushHistory() {
+      history.push({ v: S.values.slice(), n: S.notes.slice() });
+      if (history.length > 300) history.shift();
+    }
+
+    function clearPeerNotes(i, d) {
+      for (const j of PEERS[i]) S.notes[j] &= ~(1 << d);
+    }
+
+    function canEdit() {
+      if (!S || S.solved) return false;
+      if (sel < 0) { say('Pick a cell first.'); return false; }
+      if (S.puzzle[sel]) { say('That one was given. Try an empty cell.'); return false; }
+      return true;
+    }
+
+    function input(d) {
+      if (!canEdit()) return;
+      if (notesMode) {
+        if (S.values[sel]) return;
+        pushHistory();
+        S.notes[sel] ^= (1 << d);
+      } else {
+        pushHistory();
+        if (S.values[sel] === d) {
+          S.values[sel] = 0;
+        } else {
+          S.values[sel] = d;
+          S.notes[sel] = 0;
+          clearPeerNotes(sel, d);
+        }
+      }
+      say('');
+      after();
+    }
+
+    function erase() {
+      if (!canEdit()) return;
+      if (!S.values[sel] && !S.notes[sel]) return;
+      pushHistory();
+      S.values[sel] = 0;
+      S.notes[sel] = 0;
+      after();
+    }
+
+    function undo() {
+      if (!S || S.solved) return;
+      const h = history.pop();
+      if (!h) return;
+      S.values = h.v;
+      S.notes = h.n;
+      save();
+      render();
+    }
+
+    function toggleNotes() {
+      notesMode = !notesMode;
+      render();
+    }
+
+    function hint() {
+      if (!S || S.solved) return;
+      let i = (sel >= 0 && !S.puzzle[sel] && S.values[sel] !== S.solution[sel]) ? sel : -1;
+      if (i < 0) {
+        const open = [];
+        for (let k = 0; k < 81; k++) if (S.values[k] !== S.solution[k]) open.push(k);
+        if (!open.length) return;
+        i = open[Math.floor(Math.random() * open.length)];
+      }
+      pushHistory();
+      S.values[i] = S.solution[i];
+      S.notes[i] = 0;
+      clearPeerNotes(i, S.solution[i]);
+      sel = i;
+      say('There you go. One more step forward.');
+      after();
+      cells[i].focus();
+    }
+
+    function check() {
+      if (!S || S.solved) return;
+      wrong = new Set();
+      for (let i = 0; i < 81; i++) {
+        if (S.values[i] && !S.puzzle[i] && S.values[i] !== S.solution[i]) wrong.add(i);
+      }
+      if (!wrong.size) {
+        say('Everything so far is right.');
+      } else {
+        say(wrong.size === 1 ? 'One cell could use another look.' : `${wrong.size} cells could use another look.`);
+        clearTimeout(wrongTimer);
+        wrongTimer = setTimeout(() => { wrong.clear(); render(); }, 2600);
+      }
+      render();
+    }
+
+    function after() {
+      if (S.values.every((v, i) => v === S.solution[i])) {
+        S.solved = true;
+        sel = -1;
+        say('');
+        save();
+        render();
+        const h = el.solved.querySelector('h2');
+        if (h) h.focus({ preventScroll: false });
+        return;
+      }
+      save();
+      render();
+    }
+
+    function conflicts() {
+      const set = new Set();
+      for (let i = 0; i < 81; i++) {
+        const v = S.values[i];
+        if (!v) continue;
+        for (const j of PEERS[i]) if (S.values[j] === v) { set.add(i); break; }
+      }
+      return set;
+    }
+
+    function render() {
+      if (!S) return;
+      const selVal = sel >= 0 ? S.values[sel] : 0;
+      const bad = conflicts();
+
+      for (let i = 0; i < 81; i++) {
+        const c = cells[i];
+        const v = S.values[i];
+        const given = !!S.puzzle[i];
+        let cls = c.dataset.base;
+        if (given) cls += ' given';
+        if (i === sel) cls += ' sel';
+        else if (selVal && v === selVal) cls += ' same';
+        else if (sel >= 0 && isPeer(sel, i)) cls += ' peer';
+        if (bad.has(i) && !given) cls += ' conflict';
+        if (wrong.has(i)) cls += ' wrong';
+        c.className = cls;
+
+        if (v) {
+          c.textContent = v;
+        } else if (S.notes[i]) {
+          let html = '<span class="notes" aria-hidden="true">';
+          for (let d = 1; d <= 9; d++) html += `<span>${S.notes[i] & (1 << d) ? d : ''}</span>`;
+          c.innerHTML = html + '</span>';
+        } else {
+          c.textContent = '';
+        }
+
+        c.tabIndex = (i === (sel >= 0 ? sel : 0)) ? 0 : -1;
+        c.setAttribute('aria-label',
+          `Row ${R[i] + 1}, column ${C[i] + 1}: ${v ? v : 'empty'}${given ? ', given' : ''}`);
+      }
+
+      const counts = new Array(10).fill(0);
+      S.values.forEach(v => { if (v) counts[v]++; });
+      numBtns.forEach((b, k) => {
+        const d = k + 1;
+        const left = Math.max(0, 9 - counts[d]);
+        b.classList.toggle('done', left === 0);
+        b.querySelector('small').textContent = left ? left : '';
+        b.setAttribute('aria-label', `${d}${left ? `, ${left} left` : ', all placed'}`);
+      });
+
+      el.notes.setAttribute('aria-pressed', String(notesMode));
+      el.undo.disabled = history.length === 0;
+      el.levels.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.level === S.level)));
+      el.play.hidden = S.solved;
+      el.solved.hidden = !S.solved;
+    }
+
+    function move(dr, dc) {
+      if (sel < 0) sel = 0;
+      else sel = ((R[sel] + dr + 9) % 9) * 9 + ((C[sel] + dc + 9) % 9);
+      render();
+      cells[sel].focus();
+    }
+
+    // Wire up controls.
+    el.undo.addEventListener('click', undo);
+    el.erase.addEventListener('click', erase);
+    el.notes.addEventListener('click', toggleNotes);
+    el.hint.addEventListener('click', hint);
+    el.check.addEventListener('click', check);
+    el.newBtn.addEventListener('click', () => requestNew(S.level));
+    el.again.addEventListener('click', () => newGame(S.level));
+    el.levels.forEach(b => b.addEventListener('click', () => {
+      if (S && b.dataset.level === S.level && !S.solved) return;
+      requestNew(b.dataset.level);
+    }));
+
+    document.addEventListener('keydown', (e) => {
+      if (currentView !== 'sudoku' || !S || S.solved) return;
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); undo(); return; }
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      const k = e.key;
+      if (/^[1-9]$/.test(k)) { e.preventDefault(); input(+k); return; }
+      if (k === 'Backspace' || k === 'Delete' || k === '0') { e.preventDefault(); erase(); return; }
+      if (k === 'n' || k === 'N') { toggleNotes(); return; }
+      if (k.startsWith('Arrow')) {
+        const a = document.activeElement;
+        if (a !== document.body && !el.board.contains(a)) return;
+        e.preventDefault();
+        if (k === 'ArrowUp') move(-1, 0);
+        if (k === 'ArrowDown') move(1, 0);
+        if (k === 'ArrowLeft') move(0, -1);
+        if (k === 'ArrowRight') move(0, 1);
+      }
+    });
+
+    return {
+      ensure() {
+        if (S) { render(); return; }
+        const saved = store.get(KEY);
+        if (valid(saved)) { S = saved; render(); }
+        else newGame('gentle');
+      }
+    };
+  })();
+
+  window.addEventListener('hashchange', route);
+  route();
+})();
+</script>
+</body>
+</html>
